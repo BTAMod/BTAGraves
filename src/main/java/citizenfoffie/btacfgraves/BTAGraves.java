@@ -13,8 +13,8 @@ import turniplabs.halplibe.helper.BlockBuilder;
 import turniplabs.halplibe.helper.EntityHelper;
 import turniplabs.halplibe.util.ConfigHandler;
 import turniplabs.halplibe.util.GameStartEntrypoint;
-import useless.dragonfly.helper.ModelHelper;
-import useless.dragonfly.model.block.BlockModelDragonFly;
+import org.useless.dragonfly.helper.ModelHelper;
+import org.useless.dragonfly.model.block.BlockModelDragonFly;
 
 import java.util.Properties;
 
@@ -25,7 +25,7 @@ public class BTAGraves implements GameStartEntrypoint {
 	static {
 		// Config
 		Properties prop = new Properties();
-		prop.setProperty("ids.graveID", "2000");
+		prop.setProperty("ids.graveID", "2760");
 
 		config = new ConfigHandler(MOD_ID, prop);
 	}
@@ -33,7 +33,8 @@ public class BTAGraves implements GameStartEntrypoint {
 		.setBlockSound(BlockSounds.STONE)
 		.setHardness(2.5f)
 		.setTags(BlockTags.MINEABLE_BY_PICKAXE)
-		.setBlockModel(new BlockModelDragonFly(ModelHelper.getOrCreateBlockModel(MOD_ID, "grave.json")))
+		.setBlockModel(block -> new BlockModelDragonFly(block, ModelHelper.getOrCreateBlockModel(MOD_ID, "grave.json"), null, null, false, 0.25f))
+		.setTextures("minecraft:block/cobbled_stone_mossy")
 		.build(new BlockGrave("grave",config.getInt("ids.graveID"), Material.stone));
 
 	@Override
@@ -43,7 +44,7 @@ public class BTAGraves implements GameStartEntrypoint {
 
 	@Override
 	public void afterGameStart() {
-		EntityHelper.Core.createTileEntity(TitleEntityGraveChest.class, "Grave");
+		EntityHelper.createTileEntity(TitleEntityGraveChest.class, "Grave");
 	}
 	public static void logNetwork(String message){ // Might fix some weird class missing crash
 		NetServerHandler.logger.info(message);

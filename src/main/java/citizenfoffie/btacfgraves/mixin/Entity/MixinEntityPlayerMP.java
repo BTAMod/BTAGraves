@@ -12,7 +12,7 @@ import net.minecraft.server.net.handler.NetServerHandler;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 
-@Mixin(EntityPlayerMP.class)
+@Mixin(value = EntityPlayerMP.class, remap = false)
 public abstract class MixinEntityPlayerMP extends EntityPlayer implements IEntityPlayer {
 	@Shadow
 	protected abstract void getNextWindowId();
@@ -28,7 +28,7 @@ public abstract class MixinEntityPlayerMP extends EntityPlayer implements IEntit
 	}
 	public void BTAGraves$displayGUIGrave(IInventory iinventory){
 		this.getNextWindowId();
-		BTAGraves.logNetwork(this.username + " interacted with iron chest at (" + x + ", " + y + ", " + z + ")");
+		BTAGraves.logNetwork(this.username + " interacted with grave at (" + x + ", " + y + ", " + z + ")");
 		this.playerNetServerHandler.sendPacket(new Packet100OpenWindow(this.currentWindowId, 0, iinventory.getInvName(), iinventory.getSizeInventory()));
 		this.craftingInventory = new ContainerChest(this.inventory, iinventory);
 		this.craftingInventory.windowId = this.currentWindowId;

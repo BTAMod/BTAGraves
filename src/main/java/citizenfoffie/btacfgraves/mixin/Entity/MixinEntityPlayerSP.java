@@ -1,7 +1,5 @@
 package citizenfoffie.btacfgraves.mixin.Entity;
 
-
-
 import citizenfoffie.btacfgraves.MixinInterfaces.IEntityPlayer;
 import citizenfoffie.btacfgraves.gui.GuiGraveChest;
 import net.minecraft.client.Minecraft;
