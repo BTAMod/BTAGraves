@@ -34,19 +34,12 @@ public class BlockGrave extends BlockTileEntityRotatable {
 			float f = this.random.nextFloat() * 0.8f + 0.1f;
 			float f1 = this.random.nextFloat() * 0.8f + 0.1f;
 			float f2 = this.random.nextFloat() * 0.8f + 0.1f;
-			while (itemstack.stackSize > 0) {
-				int i1 = this.random.nextInt(21) + 10;
-				if (i1 > itemstack.stackSize) {
-					i1 = itemstack.stackSize;
-				}
-				itemstack.stackSize -= i1;
-				EntityItem entityitem = new EntityItem(world, (float)x + f, (float)y + f1, (float)z + f2, new ItemStack(itemstack.itemID, i1, itemstack.getMetadata()));
-				float f3 = 0.05f;
-				entityitem.xd = (float)this.random.nextGaussian() * f3;
-				entityitem.yd = (float)this.random.nextGaussian() * f3 + 0.2f;
-				entityitem.zd = (float)this.random.nextGaussian() * f3;
-				world.entityJoinedWorld(entityitem);
-			}
+			EntityItem entityitem = new EntityItem(world, (float)x + f, (float)y + f1, (float)z + f2, itemstack);
+			float f3 = 0.05f;
+			entityitem.xd = (float)this.random.nextGaussian() * f3;
+			entityitem.yd = (float)this.random.nextGaussian() * f3 + 0.2f;
+			entityitem.zd = (float)this.random.nextGaussian() * f3;
+			world.entityJoinedWorld(entityitem);
 		}
 		super.onBlockRemoved(world, x, y, z, data);
 	}

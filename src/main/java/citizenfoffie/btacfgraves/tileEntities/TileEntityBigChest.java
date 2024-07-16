@@ -1,6 +1,5 @@
 package citizenfoffie.btacfgraves.tileEntities;
 
-
 import com.mojang.nbt.ListTag;
 import net.minecraft.core.block.entity.TileEntity;
 import net.minecraft.core.entity.player.EntityPlayer;
@@ -9,7 +8,7 @@ import net.minecraft.core.player.inventory.IInventory;
 import com.mojang.nbt.CompoundTag;
 import net.minecraft.core.player.inventory.InventorySorter;
 
-	public abstract class TileEntityBigChest extends TileEntity implements IInventory {
+public abstract class TileEntityBigChest extends TileEntity implements IInventory {
 		protected ItemStack[] contents;
 
 		@Override
